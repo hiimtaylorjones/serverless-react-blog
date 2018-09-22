@@ -9,9 +9,8 @@ plugins:
 # Enable auto-packing of external modules
 custom:
   webpack:
-	webpackConfig: ./webpack.config.js
-	includeModules: true
-
+    webpackConfig: ./webpack.config.js
+    includeModules: true
 
 provider:
   name: aws
@@ -19,7 +18,7 @@ provider:
   stage: prod
   region: us-west-2
 
-  # 'iamRoleStatements' defines the permission policy for the Lambda function.
+  # 'iamRoleStatement' defines the permission policy for the Lambda function.
   # In this case Lambda functions are granted with permissions to access DynamoDB.
   iamRoleStatements:
     - Effect: Allow
@@ -32,18 +31,43 @@ provider:
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
       Resource: "arn:aws:dynamodb:us-west-2:*:*"
+
 functions:
   # Defines an HTTP API endpoint that calls the main function in create.js
-  # - path: url path is /posts
+  # - path: url path is /notes
   # - method: POST request
   # - cors: enabled CORS (Cross-Origin Resource Sharing) for browser cross
   #     domain api call
   # - authorizer: authenticate using the AWS IAM role
   create:
-    handler: create.main
+    handler: functions/create.main
     events:
       - http:
           path: posts
           method: post
+          cors: true
+          authorizer: aws_iam
+
+  get:
+    # Defines an HTTP API endpoint that calls the main function in get.js
+    # - path: url path is /notes/{id}
+    # - method: GET request
+    handler: functions/get.main
+    events:
+      - http:
+          path: posts/{id}
+          method: get
+          cors: true
+          authorizer: aws_iam
+
+  index:
+    # Defines an HTTP API endpoint that calls the main function in list.js
+    # - path: url path is /notes
+    # - method: GET request
+    handler: functions/index.main
+    events:
+      - http:
+          path: notes
+          method: get
           cors: true
           authorizer: aws_iam
