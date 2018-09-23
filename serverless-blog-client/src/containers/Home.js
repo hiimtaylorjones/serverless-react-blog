@@ -6,8 +6,8 @@ export default class Home extends Component {
     return (
       <div className="Home">
         <div className="lander">
-          <h1>Scratch</h1>
-          <p>A simple note taking app</p>
+          <h1>Serverless Blog Example</h1>
+          <p>Here's a starter kit to creating a Serverless Blog with React and AWS!</p>
         </div>
       </div>
     );
