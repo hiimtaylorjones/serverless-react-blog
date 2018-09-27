@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { API } from "aws-amplify";
 import { FormGroup, FormControl, ControlLabel } from "react-bootstrap";
 import LoaderButton from "../components/LoaderButton";
 import "./NewPost.css";
@@ -29,6 +30,22 @@ export default class NewPost extends Component {
   handleSubmit = async event => {
     event.preventDefault();
     this.setState({ isLoading: true });
+    try {
+      await this.createPost({
+        title: this.state.title,
+        body: this.state.body
+      });
+      this.props.history.push("/");
+    } catch (e) {
+      alert(e);
+      this.setState({ isLoading: false });
+    }
+  }
+
+  createPost(post) {
+    return API.post("posts", "/posts", {
+      body: post
+    });
   }
 
   render() {
