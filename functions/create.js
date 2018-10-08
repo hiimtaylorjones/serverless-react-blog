@@ -1,12 +1,12 @@
 import uuid from "uuid";
-import * as dynamoDbLib from "../libs/dynamodb-lib";
-import { success, failure } from "../libs/response-lib";
+import * as dynamoDb from "../libs/dynamodb-adapter";
+import { success, failure } from "../libs/response-adapter";
 
 export async function main(event, context, callback) {
   const data = JSON.parse(event.body);
   const params = {
     TableName: "posts",
-    Item: {
+    Post: {
       postId: uuid.v1(),
       title: data.title,
       body: data.body,
@@ -15,8 +15,8 @@ export async function main(event, context, callback) {
   };
 
   try {
-    await dynamoDbLib.call("put", params);
-    callback(null, success(params.Item));
+    await dynamoDb.call("post", params);
+    callback(null, success(params.Post));
   } catch (e) {
     callback(null, failure({ status: false }));
   }

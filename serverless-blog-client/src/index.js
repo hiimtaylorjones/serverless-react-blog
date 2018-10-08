@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import Amplify from "aws-amplify";
-
 import config from "./config";
 import { BrowserRouter as Router } from "react-router-dom";
 import App from "./App";
