@@ -1,9 +1,5 @@
 {
-  "body": { 
-    "postUuid": "12345ff",
-	  "title": "hello",
-    "body": "This is a post"
-  },
+  "body": "{\"postUuid\":\"12345ff\",\"title\":\"hello\",\"body\":\"This is a post\"}",
   "requestContext": {
     "identity": {
       "cognitoIdentityId": "USER-SUB-1234"
