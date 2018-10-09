@@ -1,5 +1,5 @@
-import * as dynamoDbLib from "../libs/dynamodb-lib";
-import { success, failure } from "../libs/response-lib";
+import * as dynamoDb from "../libs/dynamodb-adapter";
+import { success, failure } from "../libs/response-adapter";
 
 export async function main(event, context, callback) {
   const params = {
@@ -7,10 +7,10 @@ export async function main(event, context, callback) {
   };
 
   try {
-	const result = await dynamoDbLib.call("query", params);
-	// Return the matching list of items in response body
-	callback(null, success(result.Items));
+	  const result = await dynamoDb.call("query", params);
+	  callback(null, success(result.Posts));
   } catch (e) {
-	callback(null, failure({ status: false }));
+    console.log(e);
+	  callback(null, failure({ status: false }));
   }
 }
