@@ -7,7 +7,7 @@ export async function main(event, context, callback) {
   const params = {
     TableName: "posts",
     Item: {
-      postUuid: uuid.v1(),
+      postId: uuid.v1(),
       title: data.title,
       body: data.body,
       createdAt: Date.now()
@@ -20,6 +20,7 @@ export async function main(event, context, callback) {
     await dynamoDb.call("put", params);
     callback(null, success(params.Item));
   } catch (e) {
+    console.log(e);
     callback(null, failure({ status: false }));
   }
 }
