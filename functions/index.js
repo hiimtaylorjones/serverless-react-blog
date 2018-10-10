@@ -3,13 +3,18 @@ import { success, failure } from "../libs/response-adapter";
 
 export async function main(event, context, callback) {
   const params = {
-	  TableName: "posts"
+    TableName: "posts",
+    KeyConditionExpression: "userId = :userId",
+    ExpressionAttributeValues: {
+      ":userId": event.requestContext.identity.cognitoIdentityId
+    }
   };
 
   try {
 	  const result = await dynamoDb.call("query", params);
 	  callback(null, success(result.Posts));
   } catch (e) {
+    console.log(e);
     callback(null, failure({ status: false }));
   }
 }
