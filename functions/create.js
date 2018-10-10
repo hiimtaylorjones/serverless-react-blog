@@ -7,7 +7,6 @@ export async function main(event, context, callback) {
   const params = {
     TableName: "posts",
     Item: {
-      userId: event.requestContext.identity.cognitoIdentityId,
       postUuid: uuid.v1(),
       title: data.title,
       body: data.body,
