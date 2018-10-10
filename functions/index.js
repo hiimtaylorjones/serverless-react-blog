@@ -14,7 +14,6 @@ export async function main(event, context, callback) {
 	  const result = await dynamoDb.call("query", params);
 	  callback(null, success(result.Posts));
   } catch (e) {
-    console.log(e);
     callback(null, failure({ status: false }));
   }
 }
