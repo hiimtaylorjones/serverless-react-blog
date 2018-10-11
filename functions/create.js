@@ -6,6 +6,9 @@ export async function main(event, context, callback) {
   const data = JSON.parse(event.body);
   const params = {
     TableName: "posts",
+    // Item is the object that we're inserting into DynamoDB.
+    // Please note that whatever we're updating must be contained under
+    // the Item hash.
     Item: {
       postId: uuid.v1(),
       title: data.title,
@@ -16,11 +19,10 @@ export async function main(event, context, callback) {
 
   try {
     // Even though we're technically POST'ing for this, we're actually
-    // calling 'put' in DynamoDB terms
+    // calling 'put' in DynamoDB terms.
     await dynamoDb.call("put", params);
     callback(null, success(params.Item));
   } catch (e) {
-    console.log(e);
     callback(null, failure({ status: false }));
   }
 }
