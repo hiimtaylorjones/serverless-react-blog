@@ -12,6 +12,6 @@ export async function main(event, context, callback) {
 	  const result = await dynamoDb.call("scan", params);
 	  callback(null, success(result.Posts));
   } catch (e) {
-    callback(null, failure({ status: false }));
+    callback(null, failure({ status: false, message: e }));
   }
 }
