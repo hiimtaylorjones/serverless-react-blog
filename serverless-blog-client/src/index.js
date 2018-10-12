@@ -11,7 +11,7 @@ Amplify.configure({
   API: {
     endpoints: [
       {
-        name: "serverless-blog-api",
+        name: "posts",
         endpoint: config.apiGateway.URL,
         region: config.apiGateway.REGION
       },
