@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { API } from "aws-amplify";
 import { PageHeader, ListGroup, ListGroupItem } from "react-bootstrap";
-import "./Home.css";
+import "./BlogIndex.css";
 
-export default class Home extends Component {
+export default class BlogIndex extends Component {
   constructor(props) {
     super(props);
 
@@ -59,7 +59,7 @@ export default class Home extends Component {
 
   render() {
     return (
-      <div className="Home">
+      <div className="BlogIndex">
         {this.renderPosts()}
         <ListGroupItem
           key="new"
