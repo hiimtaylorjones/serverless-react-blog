@@ -50,6 +50,12 @@ export default class BlogIndex extends Component {
     return (
       <div className="posts">
         <PageHeader>My Blog Posts</PageHeader>
+        <ListGroupItem
+          key="new"
+          href="/posts/new"
+          onClick={this.handlePostClick}>
+          <h4><b>{"\uFF0B"}</b>Write New Post</h4>
+        </ListGroupItem>
         <ListGroup>
           {!this.state.isLoading && this.renderPostsList(this.state.posts)}
         </ListGroup>
@@ -60,13 +66,9 @@ export default class BlogIndex extends Component {
   render() {
     return (
       <div className="BlogIndex">
+         
         {this.renderPosts()}
-        <ListGroupItem
-          key="new"
-          href="/posts/new"
-          onClick={this.handlePostClick}>
-          <h4><b>{"\uFF0B"}</b>Write New Post</h4>
-        </ListGroupItem>
+       
       </div>
     );
   }
