@@ -31,27 +31,13 @@ export default class Home extends Component {
   renderPostsList(posts) {
     return [{}].concat(posts).map(
       (post, i) =>
-        i !== 0
-          ? <ListGroupItem
-              key={posts.postId}
-              href={`/notes/${post.postId}`}
-              onClick={this.handlePostClick}
-              header={post.title}
-            >
-              {"Created: " + new Date(post.createdAt).toLocaleString()}
-              <div class="post-body">
-                {post.body}
-              </div>
-            </ListGroupItem>
-          : <ListGroupItem
-              key="new"
-              href="/posts/new"
-              onClick={this.handlePostClick}
-            >
-              <h4>
-                <b>{"\uFF0B"}</b> Create a new post
-              </h4>
-            </ListGroupItem>
+        <div className="post">
+          <h1 className="post-title">{post.title}</h1>
+          <div className="post-body">
+            <p>{post.body}</p>
+          </div>
+          <hr />
+        </div>
     );
   }
 
@@ -75,6 +61,12 @@ export default class Home extends Component {
     return (
       <div className="Home">
         {this.renderPosts()}
+        <ListGroupItem
+          key="new"
+          href="/posts/new"
+          onClick={this.handlePostClick}>
+          <h4><b>{"\uFF0B"}</b>Write New Post</h4>
+        </ListGroupItem>
       </div>
     );
   }

@@ -11,3 +11,11 @@
 .Home .lander p {
   color: #999;
 }
+
+.Home .post-title {
+  font-size: 2.8em;
+}
+
+.Home .post-body {
+  font-size: 1.5em;
+}
