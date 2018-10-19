@@ -19,3 +19,7 @@
 .BlogIndex .post-body {
   font-size: 1.5em;
 }
+
+.BlogIndex .list-group-item {
+  margin-bottom: 20px;
+}

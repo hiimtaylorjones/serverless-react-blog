@@ -1,12 +1,21 @@
-.NewNote form {
+.NewPost form {
   padding-bottom: 15px;
 }
 
-.NewNote form textarea {
+.NewPost form textarea {
   height: 300px;
   font-size: 24px;
 }
 
-.NewNote form text {
+.NewPost form text {
   font-size: 24px;
+}
+
+.NewPost button {
+  width: 40%;
+}
+
+.NewPost {
+  width: 60%;
+  margin: 0 auto;
 }

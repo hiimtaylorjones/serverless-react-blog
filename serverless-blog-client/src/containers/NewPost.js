@@ -18,6 +18,11 @@ export default class NewPost extends Component {
   }
 
   validateForm() {
+    if (this.state.title === "") {
+      return false;
+    } else if (this.state.body === "") {
+      return false;
+    }
     return true;
   }
 
@@ -50,9 +55,12 @@ export default class NewPost extends Component {
 
   render() {
     return (
-      <div className="NewPost">
+      <div className="center NewPost">
+        <h1>Write A New Post</h1>
+        <h4>Use the form below to create the content you want to write about.</h4>
         <form onSubmit={this.handleSubmit}>
         <FormGroup controlId="title">
+            <ControlLabel>Title</ControlLabel>
             <FormControl
               onChange={this.handleChange}
               value={this.state.title}
@@ -60,6 +68,7 @@ export default class NewPost extends Component {
             />
           </FormGroup>
           <FormGroup controlId="body">
+            <ControlLabel>Body</ControlLabel>
             <FormControl
               onChange={this.handleChange}
               value={this.state.body}
@@ -73,8 +82,8 @@ export default class NewPost extends Component {
             disabled={!this.validateForm()}
             type="submit"
             isLoading={this.state.isLoading}
-            text="Create"
-            loadingText="Creating…"
+            text="Submit Content"
+            loadingText="Creating Your Post..."
           />
         </form>
       </div>
