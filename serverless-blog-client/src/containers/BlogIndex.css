@@ -23,3 +23,8 @@
 .BlogIndex .list-group-item {
   margin-bottom: 20px;
 }
+
+.BlogIndex .post {
+  width: 90%;
+  margin: 0 auto;
+}

@@ -32,7 +32,7 @@ export default class BlogIndex extends Component {
     return [{}].concat(posts).map(
       (post, i) =>
         <div className="post">
-          <h1 className="post-title">{post.title}</h1>
+          <h2 className="post-title">{post.title}</h2>
           <div className="post-body">
             <p>{post.body}</p>
           </div>
