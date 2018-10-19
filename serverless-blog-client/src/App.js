@@ -18,7 +18,6 @@ class App extends Component {
           </Navbar.Header>
           <Navbar.Collapse>
             <Nav pullRight>
-              <NavItem href="/posts">Posts</NavItem>
               <NavItem href="/posts/new">Create Post</NavItem>
             </Nav>
           </Navbar.Collapse>
