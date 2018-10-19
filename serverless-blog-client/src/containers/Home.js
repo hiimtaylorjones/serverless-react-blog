@@ -36,9 +36,12 @@ export default class Home extends Component {
               key={posts.postId}
               href={`/notes/${post.postId}`}
               onClick={this.handlePostClick}
-              header={post.title.trim().split("\n")[0]}
+              header={post.title}
             >
               {"Created: " + new Date(post.createdAt).toLocaleString()}
+              <div class="post-body">
+                {post.body}
+              </div>
             </ListGroupItem>
           : <ListGroupItem
               key="new"
